@@ -12,6 +12,8 @@ phases:
       - REPOSITORY_URI=591616226324.dkr.ecr.us-east-1.amazonaws.com/ecsdeploymentpipeline
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - docker logout
+      - docker --version
       - docker info
   build:
     commands:
